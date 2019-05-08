@@ -1,6 +1,6 @@
 {
   "id": "quick-reference-select",
-  "name": "quick-reference-select",
+  "name": "Quick Reference Select",
   "srcdoc": "./build/index.html",
   "fieldTypes": [
     "Entry"
