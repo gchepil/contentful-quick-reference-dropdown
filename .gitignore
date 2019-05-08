@@ -20,4 +20,5 @@ build/*
 !/build/index.html
 
 # Other
+package-lock.json
 .idea/
