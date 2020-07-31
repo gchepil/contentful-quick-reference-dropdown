@@ -3,6 +3,6 @@
   "name": "Quick Reference Select",
   "srcdoc": "./build/index.html",
   "fieldTypes": [
-    "Entry"
+    "Object"
   ]
 }
