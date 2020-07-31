@@ -84,14 +84,16 @@ class App extends React.Component {
                     isDisabled={isLoading}
                 >
                     <Option value="">Choose a value</Option>
-                    {options.map((option) => (
+                    {options.map((option) => {
+                        const optionObj = JSON.parse(option);
+                        return (
                         <Option
                             key={option}
                             value={option}
                         >
-                            {option}
+                            {optionObj.label}
                         </Option>
-                    ))}
+                    )})}
                 </Select>
                 {errorMessage && <ValidationMessage>{errorMessage}</ValidationMessage>}
             </Fragment>
