@@ -72,6 +72,7 @@ class App extends React.Component {
 
         return (
             <Fragment>
+                {JSON.stringify(options)}
                 <Select
                     id="optionSelect"
                     name="optionSelect"
@@ -87,7 +88,7 @@ class App extends React.Component {
                             key={option}
                             value={option}
                         >
-                            {option.label}
+                            {option && JSON.parse(option).label}
                         </Option>
                     ))}
                 </Select>
