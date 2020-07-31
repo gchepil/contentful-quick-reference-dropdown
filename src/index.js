@@ -87,7 +87,7 @@ class App extends React.Component {
                             key={option}
                             value={option}
                         >
-                            {JSON.parse(option).label}
+                            {option.label}
                         </Option>
                     ))}
                 </Select>
