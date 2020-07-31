@@ -72,7 +72,7 @@ class App extends React.Component {
 
         return (
             <Fragment>
-                {JSON.stringify(this.props.sdk.field.validations)}
+                {JSON.stringify()}
                 <Select
                     id="optionSelect"
                     name="optionSelect"
@@ -83,7 +83,7 @@ class App extends React.Component {
                     isDisabled={isLoading}
                 >
                     <Option value="">Choose a value</Option>
-                    {options.map((option) => (
+                    {this.props.sdk.field.validations.map((option) => (
                         <Option
                             key={option}
                             value={option}
