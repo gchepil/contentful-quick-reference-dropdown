@@ -5,17 +5,6 @@ import {Option, Select, ValidationMessage} from '@contentful/forma-36-react-comp
 import {init} from 'contentful-ui-extensions-sdk';
 import '@contentful/forma-36-react-components/dist/styles.css';
 import './index.css';
-
-const unwrapLinkId = (link) => (link && link.sys && link.sys.id) ? link.sys.id : undefined;
-
-const wrapLinkId = (id) => ({
-    sys: {
-        id,
-        linkType: "Object",
-        type: "JSON"
-    }
-});
-
 class App extends React.Component {
     static propTypes = {
         sdk: PropTypes.object.isRequired,
@@ -26,7 +15,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: unwrapLinkId(props.sdk.field.getValue()),
+            value:props.sdk.field.getValue(),
             options:  this.props.sdk.field.validations.map(JSON.parse),
             isLoading: true,
             errorMessage: '',
@@ -49,7 +38,7 @@ class App extends React.Component {
     }
 
     onExternalChange = (externalValue) => {
-        const value = unwrapLinkId(externalValue);
+        const value = externalValue;
         this.setState({value});
     };
 
@@ -61,7 +50,7 @@ class App extends React.Component {
             this.setState({value, isLoading: true});
 
             if (value) {
-                await sdk.field.setValue(wrapLinkId(value));
+                await sdk.field.setValue(value);
             } else {
                 await sdk.field.removeValue();
             }
@@ -93,12 +82,12 @@ class App extends React.Component {
                     isDisabled={isLoading}
                 >
                     <Option value="">Choose a value</Option>
-                    {options.map(({value, label}) => (
+                    {options.map((option) => (
                         <Option
-                            key={value}
-                            value={value}
+                            key={option}
+                            value={option}
                         >
-                            {label}
+                            {option.label}
                         </Option>
                     ))}
                 </Select>
