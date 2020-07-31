@@ -25,7 +25,8 @@ class App extends React.Component {
     componentDidMount() {
         const {sdk} = this.props;
         sdk.window.startAutoResizer();
-        console.log(this.props.sdk.field);
+        this.setState({options: this.props.sdk.field.validations[0].in});
+        console.log(this.props.sdk.field.validations[0].in);
         // Handler for external field value changes (e.g. when multiple authors are working on the same entry).
         this.detachExternalChangeHandler = sdk.field.onValueChanged(
             this.onExternalChange
@@ -88,7 +89,7 @@ class App extends React.Component {
                             key={option}
                             value={option}
                         >
-                            {JSON.parse(option).label}
+                            {option}
                         </Option>
                     ))}
                 </Select>
