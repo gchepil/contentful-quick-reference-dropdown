@@ -16,7 +16,7 @@ class App extends React.Component {
         super(props);
         this.state = {
             value:props.sdk.field.getValue(),
-            options:  props.sdk.field.validations,
+            options: [],
             isLoading: false,
             errorMessage: '',
         };
@@ -25,6 +25,8 @@ class App extends React.Component {
     componentDidMount() {
         const {sdk} = this.props;
         sdk.window.startAutoResizer();
+        this.setState({options: this.props.sdk.field.validations});
+        console.log(this.props.sdk.field);
         // Handler for external field value changes (e.g. when multiple authors are working on the same entry).
         this.detachExternalChangeHandler = sdk.field.onValueChanged(
             this.onExternalChange
@@ -72,8 +74,7 @@ class App extends React.Component {
 
         return (
             <Fragment>
-                {JSON.stringify(options)}
-                {/* <Select
+                <Select
                     id="optionSelect"
                     name="optionSelect"
                     hasError={this.hasError()}
@@ -88,11 +89,11 @@ class App extends React.Component {
                             key={option}
                             value={option}
                         >
-                            {option}
+                            {option.label}
                         </Option>
                     ))}
                 </Select>
-                {errorMessage && <ValidationMessage>{errorMessage}</ValidationMessage>} */}
+                {errorMessage && <ValidationMessage>{errorMessage}</ValidationMessage>}
             </Fragment>
         );
     }
