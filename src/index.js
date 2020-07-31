@@ -72,7 +72,8 @@ class App extends React.Component {
 
         return (
             <Fragment>
-                <Select
+                {JSON.stringify(options)}
+                {/* <Select
                     id="optionSelect"
                     name="optionSelect"
                     hasError={this.hasError()}
@@ -82,7 +83,7 @@ class App extends React.Component {
                     isDisabled={isLoading}
                 >
                     <Option value="">Choose a value</Option>
-                    {this.props.sdk.field.validations.map((option) => (
+                    {options.map((option) => (
                         <Option
                             key={option}
                             value={option}
@@ -91,7 +92,7 @@ class App extends React.Component {
                         </Option>
                     ))}
                 </Select>
-                {errorMessage && <ValidationMessage>{errorMessage}</ValidationMessage>}
+                {errorMessage && <ValidationMessage>{errorMessage}</ValidationMessage>} */}
             </Fragment>
         );
     }
