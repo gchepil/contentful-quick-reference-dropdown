@@ -72,7 +72,7 @@ class App extends React.Component {
 
         return (
             <Fragment>
-                {JSON.stringify(options)}
+                {JSON.stringify(this.props.sdk.field)}
                 <Select
                     id="optionSelect"
                     name="optionSelect"
