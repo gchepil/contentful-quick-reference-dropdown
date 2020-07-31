@@ -16,7 +16,7 @@ class App extends React.Component {
         super(props);
         this.state = {
             value:props.sdk.field.getValue(),
-            options:  this.props.sdk.field.validations,
+            options:  props.sdk.field.validations,
             isLoading: false,
             errorMessage: '',
         };
