@@ -72,7 +72,6 @@ class App extends React.Component {
 
         return (
             <Fragment>
-                {JSON.stringify()}
                 <Select
                     id="optionSelect"
                     name="optionSelect"
