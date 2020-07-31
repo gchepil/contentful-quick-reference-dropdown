@@ -11,8 +11,8 @@ const unwrapLinkId = (link) => (link && link.sys && link.sys.id) ? link.sys.id :
 const wrapLinkId = (id) => ({
     sys: {
         id,
-        linkType: "Entry",
-        type: "Link"
+        linkType: "Object",
+        type: "JSON"
     }
 });
 
