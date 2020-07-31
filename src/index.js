@@ -27,7 +27,7 @@ class App extends React.Component {
         super(props);
         this.state = {
             value: unwrapLinkId(props.sdk.field.getValue()),
-            options: [],
+            options:  this.props.sdk.field.validations.map(JSON.parse),
             isLoading: true,
             errorMessage: '',
         };
@@ -40,7 +40,6 @@ class App extends React.Component {
         this.detachExternalChangeHandler = sdk.field.onValueChanged(
             this.onExternalChange
         );
-        this.loadOptions();
     }
 
     componentWillUnmount() {
@@ -73,29 +72,6 @@ class App extends React.Component {
         }
 
 
-    };
-
-    getAllowedContentTypes = () =>
-        this.props.sdk.field.validations.reduce(
-            (acc, {linkContentType}) => linkContentType ? [...acc, ...linkContentType] : acc,
-            []
-        );
-
-
-    loadOptions = async () => {
-        try {
-            this.setState({isLoading: true});
-            const resp = await this.props.sdk.space.getEntries({content_type: this.getAllowedContentTypes()});
-            const locale = this.props.sdk.field.locale;
-            const options = resp.items.reduce((acc, i) => [...acc, {
-                value: i.sys.id,
-                label: i.fields.name[locale]
-            }], []);
-            this.setState({options, isLoading: false, errorMessage: null});
-        } catch (error) {
-            console.error(error);
-            this.setState({isLoading: false, errorMessage: 'Couldn\'t load options, please reload'})
-        }
     };
 
     hasError = () => !!this.state.errorMessage;
