@@ -16,8 +16,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             value:props.sdk.field.getValue(),
-            options:  this.props.sdk.field.validations.map(JSON.parse),
-            isLoading: true,
+            options:  this.props.sdk.field.validations,
+            isLoading: false,
             errorMessage: '',
         };
     }
@@ -87,7 +87,7 @@ class App extends React.Component {
                             key={option}
                             value={option}
                         >
-                            {option.label}
+                            {JSON.parse(option).label}
                         </Option>
                     ))}
                 </Select>
